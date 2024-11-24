@@ -1,8 +1,29 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
 
-<h1>Welcome to My Inventory App</h1>
+<h1>The Video Games</h1>
 
 <!-- Add your page-specific content here -->
 
+
+<div class="container">
+  <div class="row">
+    {% for i in range(12) %}
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card m-4">
+        <img src="..." class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p p class="card-text">
+            Some quick example text to build on the card title and make up the bulk of
+            the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+    </div>
+    
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
