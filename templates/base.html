@@ -87,7 +87,7 @@
           </div>
           <div class="modal-body">
 
-            <form class="row g-3">
+            <form class="row g-3" action="/add" method="POST">
               <div class="col-md-6">
                 <label for="title" class="form-label">Title</label>
                 <input type="title" class="form-control" id="title" name="title">
@@ -111,7 +111,6 @@
                 <input type="text" class="form-control" id="description" name="description">
               </div>
 
-              <form class="row g-3">
                 <div class="col-md-6">
                   <label for="developer" class="form-label">Developer</label>
                   <input type="text" class="form-control" id="developer" name="developer">
@@ -122,14 +121,14 @@
                 <input type="text" class="form-control" id="release" placeholder="Year" name="release">
               </div>
 
-              <form class="row g-3">
                 <div class="col-md-6">
                   <label for="publisher" class="form-label">Publisher</label>
                   <input type="text" class="form-control" id="publisher" name="publisher">
                 </div>
 
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add Game</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Add Game</button>
+            </form>
           </div>
         </div>
       </div>

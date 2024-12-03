@@ -7,9 +7,10 @@ class Game(db.Model):
     title = db.Column(db.String(100), nullable = False)
     developer = db.Column(db.String(100))
     publisher = db.Column(db.String(100))
-    realese = db.Column(db.Integer)
+    release = db.Column(db.Integer)
     genre = db.Column(db.String(100))
-    image_url = db.Column(db.String(100))
+    description = db.Column(db.String(1000))
+    #image_url = db.Column(db.String(100))
 
 # Define your database model here
 # Example: class Item(db.Model):
