@@ -12,8 +12,8 @@ def init_routes(app):
     @app.route('/', methods=['GET'])
     def get_items():
         # This route should retrieve all items from the database and display them on the page.
-        games=Game.query.all
-        return render_template('index.html', message='Displaying all items')
+        games=Game.query.all()
+        return render_template('index.html', games= games)
     
     @app.route('/add', methods=['POST'])
     def add_item():
@@ -28,8 +28,8 @@ def init_routes(app):
         )
         db.session.add(new_game)
         db.session.commit()
-        # This route should handle updating an existing item identified by the given ID.
-        return render_template('index.html', message=f'Item added successfully')
+        return redirect(url_for('get_items'))
+        #return render_template('index.html', message=f'Item added successfully')
 
     @app.route('/update', methods=['POST'])
     def update_item():
