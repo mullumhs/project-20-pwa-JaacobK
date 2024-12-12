@@ -23,8 +23,8 @@ def init_routes(app):
             publisher=request.form['publisher'],
             release=request.form['release'],
             genre=request.form['genre'],
-            description=request.form['description']
-            #add img later
+            description=request.form['description'],
+            img_url=request.form['img_url']
         )
         db.session.add(new_game)
         db.session.commit()
@@ -32,9 +32,24 @@ def init_routes(app):
         #return render_template('index.html', message=f'Item added successfully')
 
     @app.route('/update', methods=['POST'])
-    def update_item():
-        # This route should handle updating an existing item identified by the given ID.
-        return render_template('index.html', message=f'Item updated successfully')
+    def update():
+        id=request.form['id']
+        game=Game.query.get(id)
+        game.title=request.form['title'],
+        game.developer=request.form['developer'],
+        game.publisher=request.form['publisher'],
+        game.release=request.form['release'],
+        game.genre=request.form['genre'],
+        game.description=request.form['description'],
+        game.img_url=request.form['img_url']
+        db.session.commit()
+        return redirect(url_for('get_items'))
+
+    @app.route('/edit', methods=['GET'])
+    def edit():
+        id=request.args.get('id')
+        game =Game.query.get(id)
+        return render_template('edit.html', game = game)
 
 
 
