@@ -35,12 +35,12 @@ def init_routes(app):
     def update():
         id=request.form['id']
         game=Game.query.get(id)
-        game.title=request.form['title'],
-        game.developer=request.form['developer'],
-        game.publisher=request.form['publisher'],
-        game.release=request.form['release'],
-        game.genre=request.form['genre'],
-        game.description=request.form['description'],
+        game.title=request.form['title']
+        game.developer=request.form['developer']
+        game.publisher=request.form['publisher']
+        game.release=request.form['release']
+        game.genre=request.form['genre']
+        game.description=request.form['description']
         game.img_url=request.form['img_url']
         db.session.commit()
         return redirect(url_for('get_items'))
@@ -55,5 +55,9 @@ def init_routes(app):
 
     @app.route('/delete', methods=['POST'])
     def delete_item():
+        id=request.args.get('id')
+        game =Game.query.get(id)
+        db.sessions.delete(game)
+        db.sessions.commit()
         # This route should handle deleting an existing item identified by the given ID.
-        return render_template('index.html', message=f'Item deleted successfully')
+        return redirect(url_for('get_items'))

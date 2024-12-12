@@ -1,16 +1,17 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-
-<form class="row g-3" action="/add" method="POST">
+<h2>Edit</h2>
+<form action="/update" method="POST">
+  <input type="hidden" name="id" value="{{game.id}}"> 
     <div class="col-md-6">
       <label for="title" class="form-label">Title</label>
-      <input type="title" class="form-control" id="title" name="title">
+      <input value={{game.title}} type="title" class="form-control" id="title" name="title">
     </div>
 
     <div class="col-md-4">
       <label for="genre" class="form-label">Genre</label>
-      <select id="genre" class="form-select" name="genre"> 
-        <option selected>Choose...</option>
+      <select value={{game.genre}} id="genre" class="form-select" name="genre"> 
+        <option selected>{{game.genre}}</option>
         <option>Action</option>
         <option>Platformer</option>
         <option>FPS</option>
@@ -22,30 +23,30 @@
 
     <div class="col-12">
       <label for="description" class="form-label">Description</label>
-      <input type="text" class="form-control" id="description" name="description">
+      <input value={{game.description}} type="text" class="form-control" id="description" name="description">
     </div>
 
-      <div class="col-md-6">
-        <label for="developer" class="form-label">Developer</label>
-        <input type="text" class="form-control" id="developer" name="developer">
-      </div>
+    <div class="col-md-6">
+      <label for="developer" class="form-label">Developer</label>
+      <input value={{game.developer}} type="text" class="form-control" id="developer" name="developer">
+    </div>
 
     <div class="col-md-4">
       <label for="release" class="form-label">Release Date</label>
-      <input type="text" class="form-control" id="release" placeholder="Year" name="release">
+      <input value={{game.release}} type="text" class="form-control" id="release" placeholder="Year" name="release">
     </div>
 
-      <div class="col-md-6">
-        <label for="publisher" class="form-label">Publisher</label>
-        <input type="text" class="form-control" id="publisher" name="publisher">
-      </div>
+    <div class="col-md-6">
+      <label for="publisher" class="form-label">Publisher</label>
+      <input value={{game.publisher}} type="text" class="form-control" id="publisher" name="publisher">
+    </div>
 
-      <div class="col-md-4">
-        <label for="img_url" class="form-label">img_url</label>
-        <input type="text" class="form-control" id="img_url" name="img_url">
-      </div>
+    <div class="col-md-4">
+      <label for="img_url" class="form-label">img_url</label>
+      <input value={{game.img_url}} type="text" class="form-control" id="img_url" name="img_url">
+    </div>
 
-    <button type="button" class="btn btn-secondary" href="">Cancel</button>
-    <button type="submit" class="btn btn-primary">Update Database</button>
-  </form>
+  <a type="button" class="btn btn-secondary" href="{{ url_for('get_items')}}">Cancel</a>
+  <button type="submit" class="btn btn-primary">Update Database</button>
+</form>
 {% endblock %}
