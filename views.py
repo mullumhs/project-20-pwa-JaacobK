@@ -53,11 +53,11 @@ def init_routes(app):
 
 
 
-    @app.route('/delete', methods=['POST'])
+    @app.route('/delete', methods=['GET'])
     def delete_item():
         id=request.args.get('id')
         game =Game.query.get(id)
-        db.sessions.delete(game)
-        db.sessions.commit()
+        db.session.delete(game)
+        db.session.commit()
         # This route should handle deleting an existing item identified by the given ID.
         return redirect(url_for('get_items'))
