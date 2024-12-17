@@ -13,16 +13,20 @@ def init_routes(app):
     def get_items():
         search_query = request.args.get('query', "")
         genre = request.args.get('genre', "")
+
+        # don't do two separate queries
+        # figure out how to query by both search terms (combining)
+
         if search_query:
             games = Game.query.filter(Game.title.ilike(f'%{search_query}%')).all()
-
+            return render_template('index.html', games= filter_games)
         if genre:
-            games = Game.query.filter(Game.genre.ilike(f'%{genre}%')).all()
-        
+            filter_games = Game.query.filter(Game.genre.ilike(f'%{genre}%')).all()
+            return render_template('index.html', games= filter_games)
         else:
             games=Game.query.all()
          # This route should retrieve all items from the database and display them on the page.
-        return render_template('index.html', games= games)
+            return render_template('index.html', games= games)
     
     @app.route('/add', methods=['POST'])
     def add_item():
