@@ -46,7 +46,7 @@
       <input value={{game.img_url}} type="text" class="form-control" id="img_url" name="img_url">
     </div>
 
-  <a type="button" class="btn btn-secondary" href="{{ url_for('get_items')}}">Cancel</a>
-  <button type="submit" class="btn btn-primary">Update Database</button>
+  <a type="button" class="btn btn-secondary mt-2" href="{{url_for('get_items')}}">Cancel</a>
+  <button type="submit" class="btn btn-primary mt-2">Update Database</button>
 </form>
 {% endblock %}
