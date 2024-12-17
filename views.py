@@ -11,15 +11,8 @@ def init_routes(app):
 
     @app.route('/', methods=['GET'])
     def get_items():
-        #search_query = request.args.get('query')
-        #if search_query:
-            # If there's a search query, filter the results
-            #games = Game.query.filter(Game.title.ilike(f'%{search_query}%')).all()
-
-        #else:
-             # If no search query, return all items
-        games = Game.query.all()
         # This route should retrieve all items from the database and display them on the page.
+        games=Game.query.all()
         return render_template('index.html', games= games)
     
     @app.route('/add', methods=['POST'])
@@ -60,12 +53,11 @@ def init_routes(app):
 
 
 
-    @app.route('/delete', methods=['GET'])
-    def delete():
+    @app.route('/delete', methods=['POST'])
+    def delete_item():
         id=request.args.get('id')
         game =Game.query.get(id)
-        db.session.delete(game)
-        db.session.commit()
+        db.sessions.delete(game)
+        db.sessions.commit()
         # This route should handle deleting an existing item identified by the given ID.
         return redirect(url_for('get_items'))
-    
