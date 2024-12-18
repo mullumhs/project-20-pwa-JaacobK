@@ -51,9 +51,9 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
           
-          <form action="{{ url_for('get_items') }}" method="get" class="mb-4">
-            <select name="genre" class="form-select">
-              <option selected>Choose...</option>
+          <form action="{{ url_for('get_items') }}" method="get" class="mb-4" >
+            <select name="genre" class="form-select" >
+              <option></option>
               <option value="Action">Action</option>
               <option value="Platformer">Platformer</option>
               <option value="FPS">FPS</option>
@@ -62,19 +62,6 @@
               <option value="Sandbox">Sandbox</option>
             </select>
             <button type="submit" class="btn btn-primary mt-2">Filter</button>
-          </form>
-          <!--
-            <select
-              class="form-select me-2"
-              aria-label="Default select example"
-            >
-              <option selected>Filter</option>
-              <option value="1">Platformer</option>
-              <option value="2">FPS</option>
-              <option value="3">Sandbox</option>
-            </select>
-
-          -->
           </form>
         </div>
       </div>
