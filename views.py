@@ -19,7 +19,7 @@ def init_routes(app):
 
         if search_query:
             games = Game.query.filter(Game.title.ilike(f'%{search_query}%')).all()
-            return render_template('index.html', games= games)
+            return render_template('index.html', games= filter_games)
         if genre:
             filter_games = Game.query.filter(Game.genre.ilike(f'%{genre}%')).all()
             return render_template('index.html', games= filter_games)
@@ -27,6 +27,7 @@ def init_routes(app):
             games=Game.query.all()
          # This route should retrieve all items from the database and display them on the page.
             return render_template('index.html', games= games)
+<<<<<<< HEAD
     """
     @app.route('/view', methods=['GET'])
     def view():
@@ -35,6 +36,9 @@ def init_routes(app):
         return render_template('index.html', games= game)
         """
 
+=======
+    
+>>>>>>> parent of 86af4c0 (try to add view function fixed little error in searching, search and ilter now work)
     @app.route('/add', methods=['POST'])
     def add_item():
         new_game = Game(
