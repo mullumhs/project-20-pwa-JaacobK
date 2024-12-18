@@ -10,13 +10,11 @@ from models import db, Game # Also import your database model here
 def init_routes(app):
 
     @app.route('/', methods=['GET'])
+
+    #displays games on home page
     def get_items():
         search_query = request.args.get('query', "")
         genre = request.args.get('genre', "")
-
-        # don't do two separate queries
-        # figure out how to query by both search terms (combining)
-
         if search_query:
             games = Game.query.filter(Game.title.ilike(f'%{search_query}%')).all()
             return render_template('index.html', games= games)
@@ -27,10 +25,6 @@ def init_routes(app):
             games=Game.query.all()
          # This route should retrieve all items from the database and display them on the page.
             return render_template('index.html', games= games)
-        
-    @app.route('/view', methods=['GET'])
-    def view():
-        pass
 
     @app.route('/add', methods=['POST'])
     def add_item():
@@ -46,7 +40,6 @@ def init_routes(app):
         db.session.add(new_game)
         db.session.commit()
         return redirect(url_for('get_items'))
-        #return render_template('index.html', message=f'Item added successfully')
 
     @app.route('/update', methods=['POST'])
     def update():
