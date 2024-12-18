@@ -27,10 +27,13 @@ def init_routes(app):
             games=Game.query.all()
          # This route should retrieve all items from the database and display them on the page.
             return render_template('index.html', games= games)
-        
+    """
     @app.route('/view', methods=['GET'])
     def view():
-        pass
+        id=request.form['id']
+        game=Game.query.get(id)
+        return render_template('index.html', games= game)
+        """
 
     @app.route('/add', methods=['POST'])
     def add_item():
